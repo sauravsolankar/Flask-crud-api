@@ -258,12 +258,13 @@ with app.app_context():
 def home():
     return '<h1>Welcome to Saurav\'s Flask API - Auto Deployment Works!!</h1>'
 
-import git
 from flask import request
 
 @app.route('/update_server', methods=['POST'])
 def webhook():
     if request.method == 'POST':
+        import git
+
         # Path to your cloned project folder on PythonAnywhere
         repo = git.Repo('/home/solankarsaurav/Flask-crud-api')
         origin = repo.remotes.origin
