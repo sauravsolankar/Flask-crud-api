@@ -250,13 +250,31 @@ api.add_resource(UserSingleProcedure, "/api/users-procedure/<int:user_id>")
 # New Endpoint mapped to the new class
 api.add_resource(UserProcedure, "/api/users-procedure")
 
+with app.app_context():
+     db.create_all()
+
 
 @app.route('/')
 def home():
     return '<h1>Welcome to the Flask API!</h1>'
 
+import git
+from flask import request
+
+@app.route('/update_server', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        # Path to your cloned project folder on PythonAnywhere
+        repo = git.Repo('/home/solankarsaurav/Flask-crud-api')
+        origin = repo.remotes.origin
+        
+        # Pull the latest changes from GitHub
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+
         
     app.run(debug=True)
