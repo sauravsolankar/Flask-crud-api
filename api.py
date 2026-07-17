@@ -256,7 +256,7 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    return '<h1>Welcome to the Flask API!</h1>'
+    return '<h1>Welcome to Saurav\'s Flask API - Auto Deployment Works!!</h1>'
 
 import git
 from flask import request
