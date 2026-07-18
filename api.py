@@ -14,7 +14,7 @@ HOSTNAME = "localhost"
 PORT = "1521"          
 SERVICE_NAME = "ORCL"  
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"oracle+oracledb://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/?service_name={SERVICE_NAME}"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sauravsolankar:P8PEjvrhy0rqpZoZs3U9ZcIEtu64IfNm@dpg-d9dhd077f7vs738l58eg-a/sauravsolankardb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
