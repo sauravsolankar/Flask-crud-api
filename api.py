@@ -25,8 +25,8 @@ CORS(app)
 class UserModel(db.Model):
     __tablename__ = 'users_table' 
     id = db.Column(db.Integer, Sequence('user_id_seq'), primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(80), unique=True, nullable=False)
+    name = db.Column(db.String(80), unique=False, nullable=False)
+    email = db.Column(db.String(80), unique=False, nullable=False)
 
     def __repr__(self):
         return f"User(name={self.name}, email={self.email})"
