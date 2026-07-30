@@ -15,6 +15,13 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Add engine options to automatically recover stale SSL connections
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_pre_ping': True,   # Checks if connection is alive before executing SQL
+    'pool_recycle': 280,     # Recycles connection every 280 seconds (before Render closes it)
+    'pool_timeout': 30,      # Max seconds to wait for a connection
+}
+
 db = SQLAlchemy(app)
 api = Api(app)
 CORS(app)
