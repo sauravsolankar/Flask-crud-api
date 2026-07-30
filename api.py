@@ -90,6 +90,10 @@ class User(Resource):
 api.add_resource(Users, "/api/users")
 api.add_resource(User, "/api/users/<int:user_id>")
 
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
+
 with app.app_context():
      db.create_all()
 
