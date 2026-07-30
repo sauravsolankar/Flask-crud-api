@@ -1,4 +1,5 @@
 from ast import Import
+from dotenv import load_dotenv
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -6,6 +7,8 @@ from sqlalchemy import Sequence
 # import oracledb
 from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
 from flask_cors import CORS
+
+load_dotenv()
 
 app = Flask(__name__)
 
